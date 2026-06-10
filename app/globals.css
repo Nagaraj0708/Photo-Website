@@ -1,26 +1,494 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================================
+   LUMINA STUDIO — Awwwards-Level Design System
+   Editorial · Cinematic · Emotional · World-Class
+   ============================================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── Color Tokens ── */
+  --color-bg:         #F8F7F4;
+  --color-ink:        #0E0E0E;
+  --color-mid:        #6B6B6B;
+  --color-accent:     #C8A96E;
+  --color-surface:    #EFEDE8;
+  --color-invert-bg:  #0E0E0E;
+  --color-invert-fg:  #F8F7F4;
+
+  /* ── Typography ── */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans:    'Inter', -apple-system, sans-serif;
+
+  /* ── Spacing ── */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-ink);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  overflow-x: hidden;
 }
+
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F8F7F4;
+  color: #0E0E0E;
+  font-family: 'Inter', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ─── Selection ───────────────────────────────────────────── */
+::selection {
+  background: #C8A96E;
+  color: #F8F7F4;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #EFEDE8; }
+::-webkit-scrollbar-thumb { background: #C8A96E; border-radius: 2px; }
+
+/* ─── Font helpers ────────────────────────────────────────── */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ─── Custom properties ───────────────────────────────────── */
+:root {
+  --nav-height: 72px;
+  --section-pad: clamp(4rem, 6vw, 6rem);
+  --container-max: 1440px;
+  --gutter: clamp(1.25rem, 4vw, 5rem);
+}
+
+/* ─── Container ───────────────────────────────────────────── */
+.container-lumina {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ─── Utility classes ─────────────────────────────────────── */
+.text-balance { text-wrap: balance; }
+
+.clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Label/eyebrow style */
+.text-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Text masking reveal — used with GSAP */
+.text-mask-wrapper { overflow: hidden; }
+.text-mask-inner { transform: translateY(110%); will-change: transform; }
+
+/* Image reveal */
+.img-reveal-wrapper { overflow: hidden; position: relative; }
+
+/* Noise texture overlay */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Nav link underline animation */
+.nav-link-underline {
+  position: relative;
+  display: inline-block;
+}
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--underline-bg, #0E0E0E);
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after { width: 100%; }
+
+/* Section spacing */
+.section-pad { padding-block: var(--section-pad); }
+
+/* Horizontal scroll track */
+.horizontal-scroll-track {
+  display: flex;
+  will-change: transform;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0%); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-inner {
+  animation: marquee 40s linear infinite;
+  display: flex;
+  white-space: nowrap;
+}
+.marquee-inner:hover { animation-play-state: paused; }
+
+/* Form input clean style */
+.input-lumina {
+  width: 100%;
+  padding: 1rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #EFEDE8;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #0E0E0E;
+  outline: none;
+  transition: border-color 0.3s;
+  border-radius: 0;
+}
+.input-lumina:focus { border-bottom-color: #C8A96E; }
+.input-lumina::placeholder { color: #6B6B6B; }
+
+/* Cursor dot */
+.cursor-dot {
+  width: 8px; height: 8px;
+  background: #C8A96E;
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 1.5px solid rgba(14, 14, 14, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Play button */
+.play-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: #C8A96E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s;
+  cursor: pointer;
+}
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 40px rgba(200, 169, 110, 0.4);
+}
+
+/* Image hover zoom */
+.img-hover-zoom { overflow: hidden; }
+.img-hover-zoom img {
+  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+              filter 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.img-hover-zoom:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+/* Stat number tabular */
+.stat-number {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #EFEDE8 0%, #E8E5DF 50%, #EFEDE8 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+}
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── Custom cursor — hide default on desktop ─────────────── */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: #C8A96E;
+  z-index: 9999;
+  transform-origin: left;
+}
+
+/* ─── Container Editorial ────────────────────────────────── */
+.container-editorial {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ─── Tag / Eyebrow ──────────────────────────────────────── */
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ─── Font Editorial ─────────────────────────────────────── */
+.font-editorial {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+}
+
+/* ─── Button Accent ──────────────────────────────────────── */
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: #C8A96E;
+  color: #0E0E0E;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.25s, transform 0.25s;
+  border-radius: 2px;
+}
+.btn-accent:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ─── Additional Utility Classes ─────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: #0E0E0E;
+  color: #F8F7F4;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #0E0E0E;
+  transition: opacity 0.25s, transform 0.25s;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.btn-primary:hover { opacity: 0.8; transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: #0E0E0E;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #D1D5DB;
+  transition: border-color 0.25s, background 0.25s;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.btn-outline:hover { border-color: #0E0E0E; }
+
+.input-clean {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #F8F7F4;
+  border: 1px solid #E5E4E0;
+  border-radius: 2px;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #0E0E0E;
+  outline: none;
+  transition: border-color 0.25s;
+}
+.input-clean:focus { border-color: #C8A96E; }
+.input-clean::placeholder { color: #9CA3AF; }
+
+.rule-thin {
+  width: 100%;
+  height: 1px;
+  background: #E5E4E0;
+}
+
+.accent-line {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: #C8A96E;
+  flex-shrink: 0;
+}
+
+/* ─── react-day-picker v8 — Shiyarah Design Overrides ───── */
+/* Override the library CSS variables inside our panel */
+.sw-datepicker-panel .rdp {
+  --rdp-cell-size:         2.375rem;
+  --rdp-caption-font-size: 1rem;
+  --rdp-accent-color:      #0E0E0E;
+  --rdp-background-color:  rgba(200, 169, 110, 0.08);
+  --rdp-selected-color:    #ffffff;
+  --rdp-outline:           2px solid #C8A96E;
+  --rdp-outline-selected:  2px solid #0E0E0E;
+  margin: 0;
+  padding: 1rem 1rem 0;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Caption — month + year label */
+.sw-datepicker-panel .rdp-caption_label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #0E0E0E;
+  letter-spacing: -0.01em;
+  border: none !important;
+  padding: 0;
+}
+
+/* Nav buttons — prev/next month */
+.sw-datepicker-panel .rdp-nav_button {
+  width: 1.875rem;
+  height: 1.875rem;
+  padding: 4px;
+  border-radius: 0;
+  border: 1px solid #EFEDE8;
+  color: #6B6B6B;
+  transition: all 0.15s;
+}
+.sw-datepicker-panel .rdp-nav_button:hover:not([disabled]) {
+  border-color: #C8A96E;
+  color: #C8A96E;
+  background: rgba(200,169,110,0.06) !important;
+}
+
+/* Caption area spacing */
+.sw-datepicker-panel .rdp-caption {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #EFEDE8;
+  margin-bottom: 0.5rem;
+}
+
+/* Weekday headers */
+.sw-datepicker-panel .rdp-head_cell {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+  height: var(--rdp-cell-size);
+}
+
+/* Day cells — remove default circle, use square */
+.sw-datepicker-panel .rdp-day {
+  border-radius: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #374151;
+  transition: all 0.12s;
+}
+
+/* Hover (handled by library via --rdp-background-color) */
+.sw-datepicker-panel .rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+  border-radius: 0;
+}
+
+/* Selected day */
+.sw-datepicker-panel .rdp-day_selected,
+.sw-datepicker-panel .rdp-day_selected:hover,
+.sw-datepicker-panel .rdp-day_selected:focus-visible {
+  background-color: #0E0E0E !important;
+  color: #ffffff !important;
+  border-radius: 0;
+  font-weight: 600;
+}
+
+/* Today's date */
+.sw-datepicker-panel .rdp-day_today:not(.rdp-day_outside) {
+  font-weight: 700;
+  color: #C8A96E;
+  position: relative;
+}
+.sw-datepicker-panel .rdp-day_today:not(.rdp-day_outside):not(.rdp-day_selected)::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px; height: 3px;
+  background: #C8A96E;
+  border-radius: 50%;
+}
+
+/* Disabled days */
+.sw-datepicker-panel .rdp-button[disabled]:not(.rdp-day_selected) {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Outside days */
+.sw-datepicker-panel .rdp-day_outside { opacity: 0.3; }
+
+/* Table — remove max-width constraint from library default */
+.sw-datepicker-panel .rdp-table {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.sw-datepicker-panel .rdp-month  { margin: 0 !important; width: 100% !important; }
+.sw-datepicker-panel .rdp-months { width: 100% !important; display: block !important; }
+.sw-datepicker-panel .rdp-cell   { width: calc(100% / 7) !important; height: var(--rdp-cell-size) !important; }
+.sw-datepicker-panel .rdp-head_cell { width: calc(100% / 7) !important; }
+
+/* ─── Reduced Motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .marquee-inner { animation: none; }
+  html { scroll-behavior: auto; }
 }
