@@ -18,7 +18,7 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <section className="pt-12 pb-24 bg-[#F8F7F4]">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
             <div>
               <div className="tag text-[#C8A96E] mb-6">Our Story</div>
               <h1
@@ -56,7 +56,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="relative">
+        {/* About page hero - fix about page decorative border overflow on mobile */}
+            <div className="relative hidden sm:block">
               <div className="relative overflow-hidden" style={{ aspectRatio:"4/5" }}>
                 <Image
                   src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=85"
@@ -70,7 +71,7 @@ export default function AboutPage() {
                   <p className="text-white/60 text-sm">Founder & Lead Photographer</p>
                 </div>
               </div>
-              <div className="absolute -bottom-5 -right-5 w-48 h-48 border border-[#EFEDE8] -z-10 pointer-events-none" />
+              <div className="absolute -bottom-5 -right-5 w-48 h-48 border border-[#EFEDE8] -z-10 pointer-events-none hidden sm:block" />
             </div>
           </div>
         </div>
@@ -89,7 +90,7 @@ export default function AboutPage() {
               { n:"05", title:"Obsessive Quality",  desc:"Each gallery goes through multiple rounds of meticulous editing before delivery." },
               { n:"06", title:"Timely Delivery",    desc:"Sneak peeks in 48 hours, full gallery in 7–14 days — we never keep you waiting." },
             ].map((v) => (
-              <div key={v.n} className="bg-[#0E0E0E] p-10 border border-white/6">
+              <div key={v.n} className="bg-[#0E0E0E] p-6 sm:p-10 border border-white/6">
                 <div className="text-white/10 mb-6" style={{ fontFamily:"'Playfair Display',serif", fontSize:"3rem", fontWeight:400, lineHeight:1 }}>{v.n}</div>
                 <h3 className="text-white font-medium text-lg mb-3">{v.title}</h3>
                 <p className="text-white/40 text-sm leading-relaxed">{v.desc}</p>

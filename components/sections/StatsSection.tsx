@@ -99,9 +99,9 @@ export default function StatsSection() {
       aria-label="Studio statistics"
     >
       <div className="container-lumina">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left: image with parallax */}
-          <div className="relative rounded-none overflow-hidden" style={{ aspectRatio: "4/5" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Left: image with parallax — shown below stats on mobile */}
+          <div className="relative overflow-hidden order-2 lg:order-1" style={{ aspectRatio: "4/5" }}>
             <ParallaxImage
               src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&q=80"
               alt="Lumina Studio — behind the lens"
@@ -112,7 +112,7 @@ export default function StatsSection() {
           </div>
 
           {/* Right: stats */}
-          <div>
+          <div className="order-1 lg:order-2">
             <div className="text-label text-[#6B6B6B] mb-8">BY THE NUMBERS</div>
             <TextReveal
               as="h2"

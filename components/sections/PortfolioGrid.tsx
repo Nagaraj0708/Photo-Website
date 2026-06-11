@@ -11,7 +11,7 @@ const ALL_PHOTOS = [
     id: 1,
     src: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80",
     cat: "Weddings",
-    span: "col-span-2",
+    span: "col-span-1 sm:col-span-2",
     aspect: "aspect-[16/10]",
   },
   {
@@ -46,7 +46,7 @@ const ALL_PHOTOS = [
     id: 6,
     src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80",
     cat: "Events",
-    span: "col-span-2",
+    span: "col-span-1 sm:col-span-2",
     aspect: "aspect-[16/10]",
   },
   {
@@ -60,7 +60,7 @@ const ALL_PHOTOS = [
     id: 8,
     src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=700&q=80",
     cat: "Weddings",
-    span: "col-span-2",
+    span: "col-span-1 sm:col-span-2",
     aspect: "aspect-[4/3]",
   },
   {
@@ -139,7 +139,7 @@ export default function PortfolioGrid() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="grid grid-cols-3 gap-3"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"
             style={{ gridAutoRows: "auto" }}
           >
             {filtered.map((photo, i) => (

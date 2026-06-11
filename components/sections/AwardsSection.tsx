@@ -20,8 +20,8 @@ export default function AwardsSection() {
         />
 
         <div className="relative">
-          {/* Centre timeline line */}
-          <div className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-[#C8956C]/50 via-[#C8956C]/20 to-transparent" />
+          {/* Centre timeline line — hidden on mobile */}
+          <div className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-[#C8956C]/50 via-[#C8956C]/20 to-transparent hidden sm:block" />
 
           <div className="space-y-10">
             {awards.map((award, i) => {
@@ -33,7 +33,7 @@ export default function AwardsSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.55, delay: i * 0.08 }}
-                  className={`relative flex ${isLeft ? "flex-row" : "flex-row-reverse"} items-center gap-6 sm:gap-10`}
+                  className={`relative flex flex-col sm:flex-row ${isLeft ? "sm:flex-row" : "sm:flex-row-reverse"} items-start sm:items-center gap-4 sm:gap-10`}
                 >
                   <div className="flex-1">
                     <div className={`bg-[#0D0A09] border border-[#3D2F2A] hover:border-[#C8956C]/25 rounded-2xl p-5 sm:p-6 transition-all ${isLeft ? "sm:mr-8" : "sm:ml-8"}`}>

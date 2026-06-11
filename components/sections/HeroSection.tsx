@@ -77,19 +77,19 @@ export default function HeroSection() {
       {/* ── Split background panels ── */}
       <div className="absolute inset-0 flex">
         {/* Left panel */}
-        <div ref={leftRef} className="relative w-1/2 overflow-hidden" style={{ opacity: 0 }}>
-          <Image src={LEFT_IMAGE} alt="Wedding photography" fill sizes="50vw" className="object-cover scale-105" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0E0E0E]/70 via-[#0E0E0E]/40 to-[#0E0E0E]/60" />
+        <div ref={leftRef} className="relative w-full sm:w-1/2 overflow-hidden" style={{ opacity: 0 }}>
+          <Image src={LEFT_IMAGE} alt="Wedding photography" fill sizes="(max-width:640px)100vw,50vw" className="object-cover scale-105" priority />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0E0E0E]/80 via-[#0E0E0E]/50 to-[#0E0E0E]/70" />
         </div>
-        {/* Right panel */}
-        <div ref={rightRef} className="relative w-1/2 overflow-hidden" style={{ opacity: 0 }}>
+        {/* Right panel — hidden on mobile */}
+        <div ref={rightRef} className="relative w-1/2 overflow-hidden hidden sm:block" style={{ opacity: 0 }}>
           <Image src={RIGHT_IMAGE} alt="Pre-wedding photography" fill sizes="50vw" className="object-cover scale-105" priority />
           <div className="absolute inset-0 bg-gradient-to-l from-[#0E0E0E]/70 via-[#0E0E0E]/40 to-[#0E0E0E]/60" />
         </div>
-        {/* Center vertical divider */}
+        {/* Center vertical divider — hidden on mobile */}
         <div
           ref={dividerRef}
-          className="absolute left-1/2 top-0 bottom-0 w-px bg-white/15"
+          className="absolute left-1/2 top-0 bottom-0 w-px bg-white/15 hidden sm:block"
           style={{ transformOrigin: "top center", transform: "scaleY(0)" }}
         />
         {/* Film grain overlay */}
@@ -153,10 +153,10 @@ export default function HeroSection() {
         </div>
 
         {/* CTAs */}
-        <div ref={ctaRef} className="flex flex-wrap items-center gap-4">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-4">
           <Link
             href="/portfolio"
-            className="group flex items-center gap-3 px-7 py-4 bg-white text-[#0E0E0E] text-[0.8rem] font-semibold tracking-[0.08em] uppercase transition-all hover:bg-[#C8A96E]"
+            className="group flex items-center gap-3 px-6 py-3.5 sm:px-7 sm:py-4 bg-white text-[#0E0E0E] text-[0.8rem] font-semibold tracking-[0.08em] uppercase transition-all hover:bg-[#C8A96E]"
             data-cursor-label="View Work"
           >
             View Our Work
@@ -166,7 +166,7 @@ export default function HeroSection() {
             href={studioInfo.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-7 py-4 border border-white/25 text-white text-[0.8rem] font-semibold tracking-[0.08em] uppercase hover:border-white/60 transition-colors"
+            className="flex items-center gap-3 px-6 py-3.5 sm:px-7 sm:py-4 border border-white/25 text-white text-[0.8rem] font-semibold tracking-[0.08em] uppercase hover:border-white/60 transition-colors"
             data-cursor-label="WhatsApp"
           >
             Book a Session

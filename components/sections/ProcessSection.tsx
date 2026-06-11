@@ -93,12 +93,12 @@ export default function ProcessSection() {
           </TextReveal>
         </div>
 
-        {/* Steps — horizontal on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-white/10">
+        {/* Steps — horizontal on desktop, vertical on mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-0 divide-y sm:divide-y-0 md:divide-x divide-white/10">
           {steps.map((step) => (
             <div
               key={step.number}
-              className="process-step relative px-0 md:px-8 py-10 md:py-0 first:pl-0 last:pr-0"
+              className="process-step relative px-0 md:px-8 py-8 md:py-0 first:pl-0 last:pr-0 sm:px-6"
               style={{ opacity: 0 }}
             >
               {/* Background number */}

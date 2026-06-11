@@ -15,6 +15,7 @@ import type {
   Stat,
   VideoItem,
   ServicePricing,
+  WeddingAlbum,
 } from "./types";
 
 // ─── Studio Contact Info ──────────────────────────────────────────────────────
@@ -320,11 +321,11 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     review:
       "Shiyarah Weddings transformed our Tamil Brahmin wedding into a visual poem. Every candid shot, every ritual — documented with such tenderness. Our album makes us cry tears of joy every single time.",
-    event: "Wedding Photography · Chennai",
-    date: "December 2024",
-  },
-  {
-    id: "t2",
+      event: "Wedding Photography · Chennai",
+      date: "December 2024",
+    },
+    {
+      id: "t2",
     name: "Keerthana & Vishnu",
     role: "Wedding Couple",
     image: "https://images.unsplash.com/photo-1522169182878-9a01f346c3d1?w=200&q=80",
@@ -672,6 +673,71 @@ export const featuredVideos: VideoItem[] = [
   },
 ];
 
+
+// ─── Wedding Albums (Pixieset) ────────────────────────────────────────────────
+
+export const weddingAlbums: WeddingAlbum[] = [
+  {
+    id: "wa1",
+    slug: "sarumathi-yeshwanth",
+    couple: "Sarumathi & Yeshwanth",
+    venue: "Sri Kapaleeshwarar Temple · Chennai",
+    date: "February 2024",
+    coverImage: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=85",
+    category: "Wedding",
+    pixiesetUrl: "weddingblog",   // gallery ID on shiyarahweddings.pixieset.com
+  },
+  {
+    id: "wa2",
+    slug: "keerthana-vishnu",
+    couple: "Keerthana & Vishnu",
+    venue: "The Leela Palace · Chennai",
+    date: "December 2023",
+    coverImage: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=85",
+    category: "Wedding",
+    pixiesetUrl: null,
+  },
+  {
+    id: "wa3",
+    slug: "meera-vikram",
+    couple: "Meera & Vikram",
+    venue: "Taj Coromandel · Chennai",
+    date: "November 2023",
+    coverImage: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=800&q=85",
+    category: "Pre-Wedding",
+    pixiesetUrl: null,
+  },
+  {
+    id: "wa4",
+    slug: "ananya-dev",
+    couple: "Ananya & Dev",
+    venue: "ITC Grand Chola · Chennai",
+    date: "October 2023",
+    coverImage: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=85",
+    category: "Reception",
+    pixiesetUrl: null,
+  },
+  {
+    id: "wa5",
+    slug: "priya-arjun",
+    couple: "Priya & Arjun",
+    venue: "Mahabalipuram Shore Temple",
+    date: "September 2023",
+    coverImage: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=85",
+    category: "Wedding",
+    pixiesetUrl: null,
+  },
+  {
+    id: "wa6",
+    slug: "riya-karan",
+    couple: "Riya & Karan",
+    venue: "Radisson Blu · Chennai",
+    date: "August 2023",
+    coverImage: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800&q=85",
+    category: "Wedding",
+    pixiesetUrl: null,
+  },
+];
 
 
 // ── Service-Based Pricing (Real Shiyarah Wedding Packages) ───────────────────

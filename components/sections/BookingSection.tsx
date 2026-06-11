@@ -166,7 +166,7 @@ export default function BookingSection() {
         {/* ── Right: form panel ── */}
         <div
           className="flex flex-col justify-center"
-          style={{ padding: "clamp(3rem,6vw,6rem) clamp(2rem,5vw,5rem)" }}
+          style={{ padding: "clamp(2rem,5vw,6rem) clamp(1.25rem,5vw,5rem)" }}
         >
           {/* Eyebrow */}
           <div className="text-label text-[#C8A96E] mb-6">

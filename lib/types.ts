@@ -144,6 +144,17 @@ export interface ServicePricingPackage {
   cta: string;
 }
 
+export interface WeddingAlbum {
+  id: string;
+  slug: string;
+  couple: string;
+  venue: string;
+  date: string;
+  coverImage: string;
+  category: string;
+  pixiesetUrl: string | null;   // null = "yet to add"
+}
+
 export interface ServicePricing {
   serviceId: string;
   serviceLabel: string;

@@ -212,7 +212,7 @@ export default function PricingPageClient() {
           <HeroSection service={current} />
 
           {/* ── PACKAGE CARDS ── */}
-          <section style={{ padding: "72px 24px", maxWidth: 1280, margin: "0 auto" }}>
+          <section style={{ padding: "clamp(2.5rem,6vw,72px) clamp(1rem,4vw,24px)", maxWidth: 1280, margin: "0 auto" }}>
 
             {/* Section header */}
             <div style={{ marginBottom: 48, textAlign: "center" }}>
@@ -362,7 +362,7 @@ function HeroSection({ service }: { service: typeof servicePricing[0] }) {
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, rgba(14,14,14,0.6) 0%, transparent 50%)" }} />
 
       {/* Content */}
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", padding: "0 40px 48px", maxWidth: 1280, margin: "0 auto", left: 0, right: 0 }}>
+      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", padding: "0 clamp(1rem,4vw,40px) clamp(1.5rem,5vw,48px)", maxWidth: 1280, margin: "0 auto", left: 0, right: 0 }}>
         <div>
           {/* Icon badge */}
           <motion.div

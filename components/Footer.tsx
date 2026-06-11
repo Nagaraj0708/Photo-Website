@@ -196,8 +196,8 @@ export default function Footer() {
 
         {/* ── Main Footer Grid ────────────────────────────────────────────── */}
         <div
-          className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          style={{ padding: "28px 48px 22px" }}
+          className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          style={{ padding: "28px clamp(1rem, 4vw, 48px) 22px" }}
         >
           {/* ── Brand Column ── */}
           <div>
@@ -531,10 +531,10 @@ export default function Footer() {
 
         {/* ── Bottom Bar ────────────────────────────────────────────────── */}
         <div
-          className="relative z-10 flex items-center justify-between gap-4 flex-wrap"
+          className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-3 flex-wrap"
           style={{
             borderTop: "1px solid rgba(255,255,255,0.07)",
-            padding: "12px 48px",
+            padding: "12px clamp(1rem, 4vw, 48px)",
           }}
         >
           <p style={{ fontSize: 11, color: "rgba(255,255,255,0.16)", letterSpacing: "0.06em", fontWeight: 300 }}>

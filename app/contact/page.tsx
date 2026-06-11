@@ -24,7 +24,7 @@ export default function ContactPage() {
 
       <section className="pb-24 bg-[#F8F7F4]">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
 
             {/* Info */}
             <div className="lg:col-span-2 space-y-10">
@@ -85,7 +85,7 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="lg:col-span-3">
-              <div className="bg-white border border-[#EFEDE8] p-10">
+              <div className="bg-white border border-[#EFEDE8] p-6 sm:p-10">
                 <h2 className="font-editorial text-[#0E0E0E] mb-8"
                   style={{ fontFamily:"'Playfair Display',serif", fontSize:"1.75rem", letterSpacing:"-0.025em", fontWeight:400 }}>
                   Send a Message
